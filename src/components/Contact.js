@@ -2,30 +2,46 @@
 // Contact component dapat berupa MUI ListItem
 // https://mui.com/material-ui/react-list/#folder-list
 import React from 'react';
-import { Card, CardContent, Avatar, Typography, Grid } from "@mui/material"; 
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 // Kalian bisa membuat CSS sendiri di src/components/Contact.css
 // atau langsung tambahkan dengan sx={{}}
 const Contact = ({ data }) => {
     // Contact berisi foto, nama, telepon, dan email
     return (
-    <div>
-      {data.map((contact, i) => (
-        <Card key={i} variant="outlined" sx={{ display: "block", mb: 1 }}>
-          <CardContent>
-            <Grid container spacing={2}>
-              <Grid item md={2}>
-                <Avatar src={contact.photo} sx={{ width: 65, height: 65 }} />
-              </Grid>
-              <Grid item md={10}>
-                <Typography>{contact.name}</Typography>
-                <Typography color="text.secondary">{contact.phone}</Typography>
-                <Typography color="text.secondary">{contact.email}</Typography>
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      ))}    
-    </div>
+      <>
+      {Array.from(data).map((contact, i) => (              
+        <List key={i} sx={{display: 'block', width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar src={contact.photo} sx={{ width: 65, height: 65, mr: 2 }} />
+          </ListItemAvatar>
+          <ListItemText
+            primary={contact.name}
+            secondary={
+              <React.Fragment>
+                <Typography
+                  sx={{ display: 'block' }}
+                  component="span"
+                  variant="body2"
+                  color="text.primary"
+                >
+                  {contact.phone}
+                </Typography>
+                {contact.email}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
+        <Divider variant="inset" component="li" />
+      </List>         
+      ))} 
+      </>    
     );
 };
 
