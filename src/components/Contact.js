@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 // Kalian bisa membuat CSS sendiri di src/components/Contact.css
 // atau langsung tambahkan dengan sx={{}}
-const Contact = ({ data }) => {
+const Contact = ({data}) => {
     // Contact berisi foto, nama, telepon, dan email
     return (
       <>
