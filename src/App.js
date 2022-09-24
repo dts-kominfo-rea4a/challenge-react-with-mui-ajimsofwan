@@ -30,8 +30,8 @@ const App = () => {
             <ContactForm addContact={addContact} />
           </Grid>
           <Grid item md={6} align="left">
-            {contacts.map((contact) => (
-              <Contact data={contact} />
+            {contacts.map((contact, i) => (
+              <Contact key={i} data={contact} />
             ))}
           </Grid>
         </Grid>
